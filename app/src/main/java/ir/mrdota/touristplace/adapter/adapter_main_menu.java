@@ -30,14 +30,14 @@ public class adapter_main_menu extends RecyclerView.Adapter<adapter_main_menu.My
     Context context;
     ArrayList<model_main_menu> list;
     boolean search ;
-    boolean fav;
+    boolean bfav;
 
 
     public adapter_main_menu(ArrayList<model_main_menu> list, Context context,boolean search,boolean fav ) {
         this.context = context;
         this.search=search;
         this.list = list;
-        this.fav=fav ;
+        this.bfav=fav ;
     }
 
     @Override
@@ -63,15 +63,21 @@ public class adapter_main_menu extends RecyclerView.Adapter<adapter_main_menu.My
                 holder.txtfrom.setText("from " + model.getCategory());
                 holder.title.setText(Html.fromHtml(model.getTitle()));
                 holder.text.setText(Html.fromHtml(model.getText()));
-            } else if (this.fav) {
+                holder.text.setVisibility(View.VISIBLE);
+                holder.textjf.setVisibility(View.GONE);
+            } else if (bfav) {
                 holder.txtfrom.setText("from " + model.getCategory());
                 holder.title.setText(model.getTitle());
-                holder.text.setText(model.getText());
+                holder.textjf.setText(model.getText());
+                holder.text.setVisibility(View.GONE);
+                holder.textjf.setVisibility(View.VISIBLE);
             }
             else {
                 holder.txtfrom.setVisibility(View.GONE);
                 holder.title.setText(model.getTitle());
-                holder.text.setText(model.getText());
+                holder.textjf.setText(model.getText());
+                holder.text.setVisibility(View.GONE);
+                holder.textjf.setVisibility(View.VISIBLE);
 
             }
             if (fav==0){
@@ -103,10 +109,12 @@ public class adapter_main_menu extends RecyclerView.Adapter<adapter_main_menu.My
                         new opendb(context).update_fav(0,_id);
                         holder.fav.setImageResource(R.drawable.ic_bookmark_border_black_24dp);
                         model.setFav(0);
-                        list = new opendb(context).maindet(5,null,null,context);
-                        notifyDataSetChanged();
-                        if (list.size()==0)
-                            Toast.makeText(context, context.getResources().getString(R.string.empty_list), Toast.LENGTH_SHORT).show();
+                        if ( bfav) {
+                            list = new opendb(context).maindet(5, null, null, context);
+                            notifyDataSetChanged();
+                            if (list.size() == 0)
+                                Toast.makeText(context, context.getResources().getString(R.string.empty_list), Toast.LENGTH_SHORT).show();
+                        }
                     }
 
 
@@ -149,6 +157,7 @@ public class adapter_main_menu extends RecyclerView.Adapter<adapter_main_menu.My
         TextView txtfrom ;
         TextView title ;
         TextView text ;
+        TextView textjf ;
         ImageView img ;
         ImageView fav;
         ImageView shr ;
@@ -159,6 +168,7 @@ public class adapter_main_menu extends RecyclerView.Adapter<adapter_main_menu.My
                 txtfrom=v.findViewById(R.id.txtfrom);
                 title = (TextView) v.findViewById(R.id.title);
                 text = (TextView) v.findViewById(R.id.txt);
+                textjf = (TextView) v.findViewById(R.id.txtjf);
                 img = (ImageView)v.findViewById(R.id.img);
                 fav= v.findViewById(R.id.fav);
                 shr=v.findViewById(R.id.shr);
