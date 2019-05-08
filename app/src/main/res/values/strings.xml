@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">tourist place</string>
     <string name="empty_list">list is empty</string>
+    <string name="shr_wh">share with</string>
     <string name="Err_not_found">not found</string>
+
 </resources>

@@ -1,6 +1,7 @@
 package ir.mrdota.touristplace.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -119,6 +120,18 @@ public class adapter_main_menu extends RecyclerView.Adapter<adapter_main_menu.My
             InputStream is = assetManager.open("img/"+model.getSrc_image());
             Bitmap bitmap = BitmapFactory.decodeStream(is);
             holder.img.setImageBitmap(bitmap);
+
+            holder.shr.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent Share=new Intent(Intent.ACTION_SEND);
+                    Share.setType("text/plan");
+                    Share.putExtra(Intent.EXTRA_SUBJECT, R.string.app_name + ": " + model.getTitle().toString());
+                    Share.putExtra(Intent.EXTRA_TEXT,model.getTitle().toString() + " \n\nfrom "+model.getCategory() +"\n\n"+model.getText().toString());
+                    context.startActivity(Intent.createChooser(Share,context.getResources().getString(R.string.shr_wh)));
+                }
+            });
         }
         catch (Exception e0){
          }

@@ -198,12 +198,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <TextView
+                        <ir.mrdota.touristplace.JustifyTextView
                             android:id="@+id/txt"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp"
                             android:layoutDirection="ltr"
+                            android:padding="5dp"
                             android:text="TextView"
                             android:textSize="17sp"
                             android:textStyle="normal" />
