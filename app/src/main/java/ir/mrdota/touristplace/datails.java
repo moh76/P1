@@ -48,7 +48,7 @@ public class datails extends AppCompatActivity {
             list = new opendb(this).maindet(5,null,null,this);
             rec.setAdapter(new adapter_main_menu(list , this,false,true ));
             if (list.size()==0)
-                Toast.makeText(this, getResources().getString(R.string.Err_not_found), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.empty_list), Toast.LENGTH_SHORT).show();
         }
 
 

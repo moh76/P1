@@ -38,7 +38,7 @@ public class main_page extends AppCompatActivity {
 
     ArrayList<model_main_menu> list = new ArrayList<>();
     ListView lv ;
-    ImageView cancel ,search_ic,filter_ic;
+    ImageView cancel ,search_ic;
     LinearLayout ln_radio ;
     RadioGroup radiogp ;
     RadioButton radiobtn;
@@ -56,8 +56,7 @@ public class main_page extends AppCompatActivity {
         srch = findViewById(R.id.srch);
         cancel=findViewById(R.id.cancel);
         search_ic =findViewById(R.id.search_ic);
-        filter_ic =findViewById(R.id.filter);
-        ln_radio =findViewById(R.id.ln_radio);
+         ln_radio =findViewById(R.id.ln_radio);
         radiogp=findViewById(R.id.radiogp);
         rec_search=findViewById(R.id.rec_search);
         rec_search.setLayoutManager(new LinearLayoutManager(this));
@@ -142,7 +141,6 @@ void search(){
 
     cancel.setImageResource(R.drawable.ic_clear_red_24dp);
     search_ic.setImageResource(R.drawable.ic_search_red_24dp);
-    filter_ic.setImageResource(R.drawable.ic_filter_list_red_24dp);
 
     ln_radio.setVisibility(View.VISIBLE);
     int id = radiogp.getCheckedRadioButtonId();
@@ -191,7 +189,6 @@ void out_search(){
 
     cancel.setImageResource(R.drawable.ic_clear_black_24dp);
     search_ic.setImageResource(R.drawable.ic_search_black_24dp);
-    filter_ic.setImageResource(R.drawable.ic_filter_list_black_24dp);
 
     ln_radio.setVisibility(View.GONE);
     lv.setVisibility(View.VISIBLE);

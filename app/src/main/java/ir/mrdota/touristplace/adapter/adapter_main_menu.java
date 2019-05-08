@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import java.io.InputStream;
@@ -95,10 +96,16 @@ public class adapter_main_menu extends RecyclerView.Adapter<adapter_main_menu.My
                         model.setFav(1);
 
 
+
+
                     }else if (fav==1){
                         new opendb(context).update_fav(0,_id);
                         holder.fav.setImageResource(R.drawable.ic_bookmark_border_black_24dp);
                         model.setFav(0);
+                        list = new opendb(context).maindet(5,null,null,context);
+                        notifyDataSetChanged();
+                        if (list.size()==0)
+                            Toast.makeText(context, context.getResources().getString(R.string.empty_list), Toast.LENGTH_SHORT).show();
                     }
 
 
